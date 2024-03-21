@@ -40,8 +40,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
   border: 2px solid black;
   height: 96px;
+  padding: 0;
+  margin: 0;
 }
 #num-pad .nums:active {
   background-color: black;
@@ -51,8 +54,11 @@
 
 #sign-in button {
   width: 100%;
+  color: black;
   background-color: white;
   font-size: 2rem;
+  padding: 0;
+  margin: 0;
 }
 #new-user-form {
   display: flex;

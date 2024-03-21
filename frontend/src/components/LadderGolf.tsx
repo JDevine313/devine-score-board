@@ -24,7 +24,8 @@ const LadderGolf = () => {
 
   return (
     <div className="BeanBags universal">
-      {game &&
+      {window.location.href.split("/")[4] &&
+        game &&
         game.players.map((player, i) => (
           <li key={player.phoneNumber} className="player">
             <p>

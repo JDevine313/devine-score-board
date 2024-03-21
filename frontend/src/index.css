@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+button {
+  padding: 20px;
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  font-size: 20px;
+  margin: 10px 15px;
+}
