@@ -1,0 +1,77 @@
+.Header {
+  color: white;
+}
+#sign-in {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90vh;
+  width: 60vw;
+  background-color: rgb(194, 194, 194);
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 3em;
+}
+#phone-label {
+  font-size: 2rem;
+  text-align: center;
+}
+#display {
+  background-color: white;
+  border: 1px solid black;
+  height: 40px;
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+}
+#num-pad {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 385px;
+}
+#num-pad .nums {
+  width: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 96px;
+}
+#num-pad .nums:active {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+}
+
+#sign-in button {
+  width: 100%;
+  background-color: white;
+  font-size: 2rem;
+}
+#new-user-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90vh;
+  width: 60vw;
+  background-color: rgb(194, 194, 194);
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 2rem;
+}
+#new-user-form button,
+#new-user-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 2rem;
+}

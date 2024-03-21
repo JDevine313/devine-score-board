@@ -1,0 +1,11 @@
+.GameView a {
+  text-decoration: none;
+}
+
+.GameView .game {
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}

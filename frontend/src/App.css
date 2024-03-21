@@ -1,0 +1,50 @@
+.App {
+  background-color: #000;
+  min-height: 100vh;
+}
+
+.universal .player {
+  background-color: #000;
+  border: 5px ridge #fff;
+  list-style: none;
+  margin: 10px;
+  padding: 15px;
+  color: #fff;
+}
+
+.universal p {
+  font-size: 4em;
+}
+
+.universal .points-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.universal div {
+  align-items: center;
+  border: 5px ridge #fff;
+  display: flex;
+  flex: 1 1;
+  font-size: 2em;
+  height: 75px;
+  justify-content: center;
+  margin: 10px 15px;
+}
+.clicked {
+  animation: clicker 1s ease-in-out;
+}
+
+@keyframes clicker {
+  0% {
+    scale: 1;
+    transform: rotateZ(0deg);
+  }
+  50% {
+    scale: 2.5;
+  }
+  100% {
+    scale: 1;
+    transform: rotateZ(360deg);
+  }
+}
