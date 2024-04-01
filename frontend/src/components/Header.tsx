@@ -5,6 +5,7 @@ import PlayerContext from "../context/PlayerContext";
 import Player from "../models/Player";
 import { useLocation, useNavigate } from "react-router-dom";
 import GameContext from "../context/GameContext";
+import secureLocalStorage from "react-secure-storage";
 
 const Header = () => {
   const [openSignIn, setOpenSignIn] = useState<boolean>(true);
@@ -33,6 +34,7 @@ const Header = () => {
     e.preventDefault();
     addPlayer({ name, phoneNumber: phoneNum }).then((res: Player) => {
       setPlayer(res);
+      secureLocalStorage.setItem("xijs", JSON.stringify(res.phoneNumber));
     });
     setOpenNewPlayer(false);
   };
@@ -47,7 +49,7 @@ const Header = () => {
         </>
       )}
       {/* Account */}
-      {openSignIn && (
+      {openSignIn && !player && (
         <form onSubmit={handleSignIn} id="sign-in">
           <div>
             <p id="phone-label">Phone Number</p>
