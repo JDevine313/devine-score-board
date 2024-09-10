@@ -44,9 +44,9 @@ gamesRouter.post("/games", async (req, res) => {
   try {
     const client = await getClient();
     const newItem = req.body;
-    await client.db().collection<Game>("games").insertOne(newItem);
+    let result = await client.db().collection<Game>("games").insertOne(newItem);
     res.status(200);
-    res.json(newItem);
+    res.json({ ...newItem, _id: new ObjectId(result.insertedId) });
   } catch (error) {
     errorResponse(error, res);
   }
