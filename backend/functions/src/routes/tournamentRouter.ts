@@ -108,6 +108,31 @@ tournamentRouter.patch("/tournaments/:id", async (req, res) => {
     errorResponse(error, res);
   }
 });
+tournamentRouter.patch(
+  "/tournaments/:id/winner/:gameIndex",
+  async (req, res) => {
+    try {
+      let id: string = req.params.id as string;
+      let gameIndex: string = req.params.gameIndex as string;
+      const winner = req.body.winner;
+      let x: any = `games.${gameIndex}.winner`;
+      const client = await getClient();
+      const result = await client
+        .db()
+        .collection<Tournament>("tournaments")
+        .updateOne({ _id: new ObjectId(id) }, { $set: { [x]: winner } });
+      if (result.modifiedCount) {
+        res.status(200);
+        res.json(winner);
+      } else {
+        res.status(404);
+        res.send("ID not found");
+      }
+    } catch (error) {
+      errorResponse(error, res);
+    }
+  }
+);
 tournamentRouter.patch("/tournaments/:id/game", async (req, res) => {
   try {
     let id: string = req.params.id as string;
