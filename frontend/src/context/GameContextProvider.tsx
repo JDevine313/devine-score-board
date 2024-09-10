@@ -48,8 +48,9 @@ const GameContextProvider = ({ children }: Props) => {
     }
   };
 
-  const changePoints = (points: number, index: number) => {
-    change(game?._id!, index, points);
+  const changePoints = async (points: number, index: number) => {
+    await change(game?._id!, index, points);
+    updateGame();
   };
 
   const Bust = (game: Game) => {

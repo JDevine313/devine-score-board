@@ -5,15 +5,17 @@ import GameContext from "../context/GameContext";
 const BocceBall = () => {
   const { game, updateGame, changePoints } = useContext(GameContext);
 
+  // useEffect(() => {
+  //   const updating = setInterval(() => {
+  //     updateGame();
+  //   }, 2000);
+  //   return () => clearInterval(updating);
+  // }, []);
   useEffect(() => {
-    const updating = setInterval(() => {
-      updateGame();
-    }, 2000);
-    return () => clearInterval(updating);
+    updateGame();
   }, []);
 
   const handleClicker = (e: any) => {
-    console.log(e.target);
     if (e.target.tagName === "DIV") {
       e.target.classList.add("clicked");
       setTimeout(() => {
@@ -32,9 +34,27 @@ const BocceBall = () => {
               {player.name} : {game.score[i]}
             </p>
             <section onClick={handleClicker} className="points-section">
-              <div onClick={() => changePoints(1, i)}>+1</div>
-              <div onClick={() => changePoints(2, i)}>+2</div>
-              <div onClick={() => changePoints(3, i)}>+3</div>
+              <div
+                onClick={() => {
+                  changePoints(1, i);
+                }}
+              >
+                +1
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(2, i);
+                }}
+              >
+                +2
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(3, i);
+                }}
+              >
+                +3
+              </div>
             </section>
           </li>
         ))}

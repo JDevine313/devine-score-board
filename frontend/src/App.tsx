@@ -14,6 +14,9 @@ import BeerDie from "./components/BeerDie";
 import BocceBall from "./components/BocceBall";
 import LadderGolf from "./components/LadderGolf";
 import TimberToss from "./components/TimberToss";
+import Tournament from "./components/Tournament";
+import TournamentGame from "./components/TournamentGame";
+import PastTournaments from "./components/PastTournaments";
 
 function App() {
   return (
@@ -35,6 +38,9 @@ function App() {
           <Route path="/ladder-golf/:_id" element={<LadderGolf />} />
           <Route path="/timber-toss" element={<TimberToss />} />
           <Route path="/timber-toss/:_id" element={<TimberToss />} />
+          <Route path="/tournament" element={<Tournament />} />
+          <Route path="/tournament/:game" element={<TournamentGame />} />
+          <Route path="/tournament/all" element={<PastTournaments />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

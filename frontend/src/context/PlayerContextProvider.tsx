@@ -14,7 +14,9 @@ const PlayerContextProvider = ({ children }: Props) => {
   useEffect(() => {
     if (secureLocalStorage.getItem("xijs")) {
       getPlayerByPhone(String(secureLocalStorage.getItem("xijs")).slice(1, 11))
-        .then((res) => setPlayer(res))
+        .then((res) => {
+          setPlayer(res);
+        })
         .catch((err) => console.log(err));
     }
   }, []);

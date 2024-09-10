@@ -5,15 +5,17 @@ import GameContext from "../context/GameContext";
 const LadderGolf = () => {
   const { game, updateGame, changePoints } = useContext(GameContext);
 
+  // useEffect(() => {
+  //   const updating = setInterval(() => {
+  //     updateGame();
+  //   }, 2000);
+  //   return () => clearInterval(updating);
+  // }, []);
   useEffect(() => {
-    const updating = setInterval(() => {
-      updateGame();
-    }, 2000);
-    return () => clearInterval(updating);
+    updateGame();
   }, []);
 
   const handleClicker = (e: any) => {
-    console.log(e.target);
     if (e.target.tagName === "DIV") {
       e.target.classList.add("clicked");
       setTimeout(() => {
@@ -32,12 +34,48 @@ const LadderGolf = () => {
               {player.name} : {game.score[i]}
             </p>
             <section onClick={handleClicker} className="points-section">
-              <div onClick={() => changePoints(1, i)}>+1</div>
-              <div onClick={() => changePoints(2, i)}>+2</div>
-              <div onClick={() => changePoints(3, i)}>+3</div>
-              <div onClick={() => changePoints(5, i)}>+5</div>
-              <div onClick={() => changePoints(7, i)}>+7</div>
-              <div onClick={() => changePoints(9, i)}>+9</div>
+              <div
+                onClick={() => {
+                  changePoints(1, i);
+                }}
+              >
+                +1
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(2, i);
+                }}
+              >
+                +2
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(3, i);
+                }}
+              >
+                +3
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(5, i);
+                }}
+              >
+                +5
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(7, i);
+                }}
+              >
+                +7
+              </div>
+              <div
+                onClick={() => {
+                  changePoints(9, i);
+                }}
+              >
+                +9
+              </div>
             </section>
           </li>
         ))}

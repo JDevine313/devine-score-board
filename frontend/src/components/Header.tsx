@@ -8,7 +8,9 @@ import GameContext from "../context/GameContext";
 import secureLocalStorage from "react-secure-storage";
 
 const Header = () => {
-  const [openSignIn, setOpenSignIn] = useState<boolean>(true);
+  const [openSignIn, setOpenSignIn] = useState<boolean>(
+    secureLocalStorage.getItem("xijs") ? false : true
+  );
   const [openNewPlayer, setOpenNewPlayer] = useState<boolean>(false);
   const [phoneNum, setPhoneNum] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -41,13 +43,19 @@ const Header = () => {
 
   return (
     <div className="Header">
-      {player && location.pathname !== "/" && (
-        <>
-          <button onClick={() => nav("/")}>Home</button>
-          <button onClick={() => startNewGame(nav)}>New Game</button>
-          <button onClick={() => handleJoinGame()}>Join Game</button>
-        </>
-      )}
+      {player &&
+        location.pathname !== "/" &&
+        !window.location.href.includes("tournament") && (
+          <>
+            <button onClick={() => nav("/")}>Home</button>
+
+            {window.location.href.split("/")[4] ? (
+              <button onClick={() => handleJoinGame()}>Join Game</button>
+            ) : (
+              <button onClick={() => startNewGame(nav)}>New Game</button>
+            )}
+          </>
+        )}
       {/* Account */}
       {openSignIn && !player && (
         <form onSubmit={handleSignIn} id="sign-in">

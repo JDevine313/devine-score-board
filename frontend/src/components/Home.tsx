@@ -4,6 +4,9 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="Home">
+      <Link to={"/tournament"}>
+        <button>Tournament</button>
+      </Link>
       <Link to={"/all-games"}>
         <button>All Games</button>
       </Link>

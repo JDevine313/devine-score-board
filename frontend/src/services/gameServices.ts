@@ -23,7 +23,7 @@ export const newGame = async (
       winner,
       name,
       date: new Date(),
-      score: [0],
+      score: Array(players.length).fill(0),
     })
   ).data;
 };

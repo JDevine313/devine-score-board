@@ -1,0 +1,25 @@
+.PastTournaments li {
+  color: white;
+  border: 2px solid white;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.PastTournaments li > div {
+  margin: 10px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+}
+
+.PastTournaments li > div h3 {
+  height: fit-content;
+  display: block;
+}
+
+.PastTournaments li p {
+  margin: 15px;
+  border: 1px solid white;
+  padding: 5px;
+}
