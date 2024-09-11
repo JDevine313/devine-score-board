@@ -108,20 +108,22 @@ const Tournament = () => {
               New Tournament!
             </button>
           )}
-          <button
-            onClick={() =>
-              joinTournament(player).then(() => {
-                getTournament().then((res) => {
-                  if (res) {
-                    setTourny(res);
-                    setStarted(true);
-                  }
-                });
-              })
-            }
-          >
-            Join The Tournament!
-          </button>
+          {!tourny?.players.some((item) => item.name === player.name) && (
+            <button
+              onClick={() =>
+                joinTournament(player).then(() => {
+                  getTournament().then((res) => {
+                    if (res) {
+                      setTourny(res);
+                      setStarted(true);
+                    }
+                  });
+                })
+              }
+            >
+              Join The Tournament!
+            </button>
+          )}
         </>
       )}
       <button onClick={() => setAddGame(true)}>Add Games</button>
