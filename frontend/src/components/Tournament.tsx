@@ -10,6 +10,7 @@ import { Tournament as T } from "../models/Tournament";
 import { addAGame } from "../services/tournamentServices";
 import { Link } from "react-router-dom";
 import Player from "../models/Player";
+import Game from "../models/Game";
 
 const Tournament = () => {
   const [tourny, setTourny] = useState<T | null>(null);
@@ -18,7 +19,7 @@ const Tournament = () => {
 
   const [selections, setSelections] = useState<any>([null]);
 
-  const [game, setGame] = useState<string>("timbertoss");
+  const [game, setGame] = useState<string>("Timber Toss");
   const { player } = useContext(PlayerContext);
   useEffect(() => {
     getTournament().then((res) => {
@@ -28,7 +29,6 @@ const Tournament = () => {
       }
     });
   }, []);
-  console.log(tourny);
   const handleGames = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     if (tourny) {
@@ -36,7 +36,6 @@ const Tournament = () => {
       for (let i = 0; i < tourny.players.length; i++) {
         let p1 = tourny.players.find((player) => player.name === selections[i]);
         if (p1) {
-          console.log(p1, selections[i]);
           playersSet.push(p1);
         }
       }
@@ -66,6 +65,23 @@ const Tournament = () => {
     // Only add a new dropdown if the current dropdown selection is made and it's the last one
     if (index === selections.length - 1 && value !== null) {
       setSelections([...newSelections, null]); // Add a new dropdown
+    }
+  };
+  const filterMyGames = (games: Game[]) => {
+    if (player) {
+      return games
+        .map((game) => {
+          const matchingMembers = game.players.filter(
+            (member) => member.name === player.name
+          );
+          if (matchingMembers.length > 0) {
+            return { ...game, members: matchingMembers };
+          }
+          return null;
+        })
+        .filter((game) => game !== null);
+    } else {
+      return [];
     }
   };
   return (
@@ -144,59 +160,75 @@ const Tournament = () => {
               </select>
             </>
           ))}
-          {/* loop inputs here */}
-          {/* <label htmlFor="player1">Player 1</label>
-          <select
-            name="player1"
-            id="player1"
-            value={player1}
-            onChange={(e) => setPlayer1(e.target.value)}
-          >
-            <option value="" selected disabled>
-              Player 1
-            </option>
-            {tourny?.players.map((player) => (
-              <option value={`${player.name}`}>{player.name}</option>
-            ))}
-          </select>
-          <label htmlFor="player2">Player 2</label>
-          <select
-            name="player2"
-            id="player2"
-            value={player2}
-            onChange={(e) => setPlayer2(e.target.value)}
-          >
-            <option value="" selected disabled>
-              Player 2
-            </option>
-            {tourny?.players.map((player) => (
-              <option value={`${player.name}`}>{player.name}</option>
-            ))}
-          </select> */}
           <button>Add</button>
         </form>
       )}
-      {tourny?.games.map((game) => {
-        return (
-          <Link to={`/tournament/${game._id}`}>
+      {tourny && (
+        <>
+          <h3>My Games</h3>
+          {filterMyGames(tourny.games).map((game) => {
+            if (game) {
+              return (
+                <Link to={`/tournament/${game._id}`}>
+                  <div className="game">
+                    <h4 className="gameName">{game.name}</h4>
+                    <div>
+                      Players:{" "}
+                      {game.players.map((player) => (
+                        <p
+                          className={
+                            player.name === game.winner?.name
+                              ? "winner"
+                              : game.winner !== null
+                              ? "loser"
+                              : ""
+                          }
+                        >
+                          {player.name}
+                        </p>
+                      ))}
+                    </div>
+                    <div>
+                      Score:{" "}
+                      {game?.score.map((score) => (
+                        <p>{score}</p>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              );
+            }
+          })}
+          <h3>All Games</h3>
+          {tourny.games.map((game) => (
             <div className="game">
-              <p>Game: {game.name}</p>
-              <p>
+              <h4 className="gameName">{game.name}</h4>
+              <div>
                 Players:{" "}
                 {game.players.map((player) => (
-                  <span>{player.name},</span>
+                  <p
+                    className={
+                      player.name === game.winner?.name
+                        ? "winner"
+                        : game.winner !== null
+                        ? "loser"
+                        : ""
+                    }
+                  >
+                    {player.name}
+                  </p>
                 ))}
-              </p>
-              <p>
+              </div>
+              <div>
                 Score:{" "}
                 {game.score.map((score) => (
-                  <span>{score},</span>
+                  <p>{score}</p>
                 ))}
-              </p>
+              </div>
             </div>
-          </Link>
-        );
-      })}
+          ))}
+        </>
+      )}
     </div>
   );
 };

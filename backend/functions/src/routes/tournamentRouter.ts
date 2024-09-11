@@ -15,7 +15,7 @@ tournamentRouter.get("/tournaments", async (req, res) => {
     const results = await client
       .db()
       .collection<Tournament[]>("tournaments")
-      .findOne({});
+      .findOne({ year: new Date().getFullYear });
     results
       ? res.status(200).json(results)
       : res.status(404).json({ message: "Not found" });

@@ -58,3 +58,15 @@ export const bust15 = async (
     )
   ).data;
 };
+
+export const exclaimWinner = async (
+  winner: Player,
+  Tid: string,
+  gameIndex: number
+): Promise<void> => {
+  return (
+    await axios.patch(`${baseUrl}/tournaments/${Tid}/winner/${gameIndex}`, {
+      winner,
+    })
+  ).data;
+};

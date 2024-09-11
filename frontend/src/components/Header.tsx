@@ -139,21 +139,28 @@ const Header = () => {
             <button
               type="button"
               className="nums"
+              onClick={() => setPhoneNum((prev) => `${prev}#`)}
+            >
+              #
+            </button>
+            <button
+              type="button"
+              className="nums"
               onClick={() => setPhoneNum((prev) => `${prev}0`)}
             >
               0
             </button>
+            <button
+              type="button"
+              className="nums back"
+              onClick={() =>
+                setPhoneNum((prev) => prev.slice(0, prev.length - 1))
+              }
+            >
+              <i className="fa-solid fa-arrow-left"></i>
+            </button>
+            <button>Sign In</button>
           </ul>
-          <button
-            type="button"
-            className="nums back"
-            onClick={() =>
-              setPhoneNum((prev) => prev.slice(0, prev.length - 1))
-            }
-          >
-            <i className="fa-solid fa-arrow-left"></i>
-          </button>
-          <button>Sign In</button>
         </form>
       )}
       {openNewPlayer && (

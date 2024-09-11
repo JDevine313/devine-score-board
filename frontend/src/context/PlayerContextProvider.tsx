@@ -20,7 +20,6 @@ const PlayerContextProvider = ({ children }: Props) => {
         .catch((err) => console.log(err));
     }
   }, []);
-
   return (
     <PlayerContext.Provider value={{ player, setPlayer }}>
       {children}

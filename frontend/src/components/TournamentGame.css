@@ -1,3 +1,25 @@
+.TournamentGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .TournamentGame li {
   color: white;
+}
+.TournamentGame h2 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 200%;
+  border-width: 10px;
+  border-style: groove double;
+  border-color: white;
+  padding: 10px;
+  text-align: center;
+}
+.TournamentGame div.game-over-btn {
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
 }

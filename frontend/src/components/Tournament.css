@@ -1,8 +1,26 @@
 .Tournament {
   color: white;
+  padding: 10px;
 }
-.game {
+.Tournament h3 {
+  font-size: 40px;
+}
+.Tournament a {
+  text-decoration: none;
+  color: white;
+}
+.Tournament .game {
   border: 2px solid white;
   margin: 10px;
   padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
+  margin: 25px 0;
+}
+.Tournament .game .winner {
+  color: green;
+}
+.Tournament .game .loser {
+  color: red;
 }
