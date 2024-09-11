@@ -26,18 +26,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/all-games" element={<GameView />} />
-          <Route path="/kan-jam" element={<KanJam />} />
-          <Route path="/kan-jam/:_id" element={<KanJam />} />
-          <Route path="/bean-bags" element={<BeanBags />} />
-          <Route path="/bean-bags/:_id" element={<BeanBags />} />
-          <Route path="/beer-die" element={<BeerDie />} />
-          <Route path="/beer-die/:_id" element={<BeerDie />} />
-          <Route path="/bocce-ball" element={<BocceBall />} />
-          <Route path="/bocce-ball/:_id" element={<BocceBall />} />
-          <Route path="/ladder-golf" element={<LadderGolf />} />
-          <Route path="/ladder-golf/:_id" element={<LadderGolf />} />
-          <Route path="/timber-toss" element={<TimberToss />} />
-          <Route path="/timber-toss/:_id" element={<TimberToss />} />
+          <Route path="/Kan Jam" element={<KanJam />} />
+          <Route path="/Kan Jam/:_id" element={<KanJam />} />
+          <Route path="/Bean Bags" element={<BeanBags />} />
+          <Route path="/Bean Bags/:_id" element={<BeanBags />} />
+          <Route path="/Beer Die" element={<BeerDie />} />
+          <Route path="/Beer Die/:_id" element={<BeerDie />} />
+          <Route path="/Bocce Ball" element={<BocceBall />} />
+          <Route path="/Bocce Ball/:_id" element={<BocceBall />} />
+          <Route path="/Ladder Golf" element={<LadderGolf />} />
+          <Route path="/Ladder Golf/:_id" element={<LadderGolf />} />
+          <Route path="/Timber Toss" element={<TimberToss />} />
+          <Route path="/Timber Toss/:_id" element={<TimberToss />} />
           <Route path="/tournament" element={<Tournament />} />
           <Route path="/tournament/:game" element={<TournamentGame />} />
           <Route path="/tournament/all" element={<PastTournaments />} />

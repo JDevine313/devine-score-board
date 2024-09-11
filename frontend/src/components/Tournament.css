@@ -24,3 +24,14 @@
 .Tournament .game .loser {
   color: red;
 }
+.Tournament form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 2em;
+}
+.Tournament select {
+  margin: 10px;
+  font-size: 25px;
+  color: black;
+}

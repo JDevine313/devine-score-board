@@ -23,7 +23,10 @@ const GameView = () => {
       {games && (
         <ul>
           {games.map((game) => (
-            <Link to={`/${game.name}/${game._id}`} key={game._id}>
+            <Link
+              to={`/${game.name}/${encodeURIComponent(game._id!)}`}
+              key={game._id}
+            >
               <li className="game">
                 <p>Date: {formatDateTime(game.date)}</p>
                 <p>Game: {game.name}</p>
